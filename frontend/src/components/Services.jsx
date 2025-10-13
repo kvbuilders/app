@@ -24,21 +24,21 @@ const Services = () => {
 
   const services = [
     {
-      icon: <Hammer size={40} />,
+      icon: <Hammer size={32} />,
       title: 'Construction',
       description: 'From foundation to finishing, we deliver quality construction services',
       image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5',
       color: '#2C5F4E'
     },
     {
-      icon: <Palette size={40} />,
+      icon: <Palette size={32} />,
       title: 'Interior Works',
       description: 'Creating beautiful, functional spaces with premium interior solutions',
       image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6',
       color: '#D4A574'
     },
     {
-      icon: <Home size={40} />,
+      icon: <Home size={32} />,
       title: 'Real Estate',
       description: 'Helping you find or develop the perfect property for your needs',
       image: 'https://images.unsplash.com/photo-1582407947304-fd86f028f716',
@@ -51,23 +51,23 @@ const Services = () => {
       id="services"
       data-testid="services-section"
       ref={sectionRef}
-      className="py-20 lg:py-32"
+      className="py-12 sm:py-16 lg:py-32"
       style={{ background: '#FAF8F5' }}
     >
-      <div className="container mx-auto px-6 lg:px-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12">
         {/* Section Header */}
-        <div className="text-center mb-16 reveal">
+        <div className="text-center mb-12 sm:mb-16 reveal">
           <div
-            className="inline-block px-4 py-2 rounded-full mb-4"
+            className="inline-block px-3 sm:px-4 py-2 rounded-full mb-3 sm:mb-4"
             style={{
               background: 'linear-gradient(135deg, rgba(212, 165, 116, 0.1) 0%, rgba(184, 147, 111, 0.1) 100%)',
               border: '1px solid rgba(212, 165, 116, 0.3)'
             }}
           >
-            <span className="text-amber-700 font-semibold text-sm">OUR SERVICES</span>
+            <span className="text-amber-700 font-semibold text-xs sm:text-sm">OUR SERVICES</span>
           </div>
           <h2
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 px-4"
             style={{
               fontFamily: 'Playfair Display, serif',
               color: '#2C5F4E'
@@ -75,13 +75,13 @@ const Services = () => {
           >
             What We Offer
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
             Comprehensive solutions for all your construction and real estate needs
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {services.map((service, index) => (
             <div
               key={index}
@@ -100,7 +100,7 @@ const Services = () => {
                 }}
               >
                 {/* Image */}
-                <div className="relative h-64 overflow-hidden img-hover">
+                <div className="relative h-56 sm:h-64 overflow-hidden img-hover">
                   <img
                     src={service.image}
                     alt={service.title}
@@ -115,7 +115,7 @@ const Services = () => {
                   
                   {/* Icon */}
                   <div
-                    className="absolute top-6 right-6 p-4 rounded-xl backdrop-blur-md transition-transform duration-300 group-hover:scale-110"
+                    className="absolute top-4 sm:top-6 right-4 sm:right-6 p-3 sm:p-4 rounded-xl backdrop-blur-md transition-transform duration-300 group-hover:scale-110"
                     style={{
                       background: 'rgba(255, 255, 255, 0.2)',
                       border: '1px solid rgba(255, 255, 255, 0.3)',
@@ -127,9 +127,9 @@ const Services = () => {
                 </div>
 
                 {/* Content */}
-                <div className="p-8">
+                <div className="p-6 sm:p-8">
                   <h3
-                    className="text-2xl font-bold mb-3"
+                    className="text-xl sm:text-2xl font-bold mb-3"
                     style={{
                       fontFamily: 'Playfair Display, serif',
                       color: service.color
@@ -137,13 +137,13 @@ const Services = () => {
                   >
                     {service.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                     {service.description}
                   </p>
                   
                   {/* Learn More Link */}
                   <button
-                    className="mt-6 font-semibold flex items-center gap-2 group-hover:gap-3 transition-all duration-300"
+                    className="mt-4 sm:mt-6 font-semibold flex items-center gap-2 group-hover:gap-3 transition-all duration-300 text-sm sm:text-base"
                     style={{ color: service.color }}
                   >
                     Learn More

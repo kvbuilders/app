@@ -44,22 +44,22 @@ const Gallery = () => {
       id="gallery"
       data-testid="gallery-section"
       ref={sectionRef}
-      className="py-20 lg:py-32 bg-white"
+      className="py-12 sm:py-16 lg:py-32 bg-white"
     >
-      <div className="container mx-auto px-6 lg:px-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12">
         {/* Section Header */}
-        <div className="text-center mb-16 reveal">
+        <div className="text-center mb-12 sm:mb-16 reveal">
           <div
-            className="inline-block px-4 py-2 rounded-full mb-4"
+            className="inline-block px-3 sm:px-4 py-2 rounded-full mb-3 sm:mb-4"
             style={{
               background: 'linear-gradient(135deg, rgba(212, 165, 116, 0.1) 0%, rgba(184, 147, 111, 0.1) 100%)',
               border: '1px solid rgba(212, 165, 116, 0.3)'
             }}
           >
-            <span className="text-amber-700 font-semibold text-sm">GALLERY</span>
+            <span className="text-amber-700 font-semibold text-xs sm:text-sm">GALLERY</span>
           </div>
           <h2
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 px-4"
             style={{
               fontFamily: 'Playfair Display, serif',
               color: '#2C5F4E'
@@ -67,13 +67,13 @@ const Gallery = () => {
           >
             Our Work Culture
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
             A glimpse into our commitment to excellence and teamwork
           </p>
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
           {images.map((image, index) => (
             <div
               key={index}
@@ -85,7 +85,7 @@ const Gallery = () => {
                 animation: `slideUp 0.8s ease-out ${index * 0.15}s forwards`
               }}
             >
-              <div className="relative rounded-2xl overflow-hidden shadow-lg img-hover" style={{ height: '400px' }}>
+              <div className="relative rounded-2xl overflow-hidden shadow-lg img-hover" style={{ height: '300px' }}>
                 <img
                   src={image.url}
                   alt={image.title}
@@ -99,14 +99,14 @@ const Gallery = () => {
                     background: 'linear-gradient(to top, rgba(44, 95, 78, 0.9) 0%, rgba(44, 95, 78, 0.5) 100%)'
                   }}
                 >
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                     <h3
-                      className="text-2xl font-bold mb-2"
+                      className="text-xl sm:text-2xl font-bold mb-1 sm:mb-2"
                       style={{ fontFamily: 'Playfair Display, serif' }}
                     >
                       {image.title}
                     </h3>
-                    <p className="text-gray-200">{image.caption}</p>
+                    <p className="text-sm sm:text-base text-gray-200">{image.caption}</p>
                   </div>
                 </div>
               </div>
