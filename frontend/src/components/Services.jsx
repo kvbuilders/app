@@ -225,6 +225,149 @@ const Services = () => {
             </div>
           ))}
         </div>
+
+        {/* Service Details Modal */}
+        <Dialog open={!!selectedService} onOpenChange={() => setSelectedService(null)}>
+          <DialogContent 
+            className="max-w-3xl max-h-[90vh] overflow-y-auto bg-white"
+            style={{ 
+              border: `2px solid ${selectedService?.color || '#D4A574'}`,
+            }}
+          >
+            {selectedService && (
+              <>
+                <DialogHeader>
+                  <div className="flex items-center gap-4 mb-4">
+                    <div
+                      className="p-4 rounded-xl"
+                      style={{
+                        background: `linear-gradient(135deg, ${selectedService.color} 0%, ${selectedService.color}dd 100%)`
+                      }}
+                    >
+                      <span className="text-white">{selectedService.icon}</span>
+                    </div>
+                    <div>
+                      <DialogTitle 
+                        className="text-3xl sm:text-4xl font-bold"
+                        style={{ 
+                          fontFamily: 'Playfair Display, serif',
+                          color: selectedService.color 
+                        }}
+                      >
+                        {selectedService.title}
+                      </DialogTitle>
+                      <DialogDescription className="text-base text-gray-600 mt-1">
+                        {selectedService.description}
+                      </DialogDescription>
+                    </div>
+                  </div>
+                </DialogHeader>
+
+                <div className="space-y-6 py-4">
+                  {/* Introduction */}
+                  <div>
+                    <p className="text-base text-gray-700 leading-relaxed">
+                      {selectedService.details.intro}
+                    </p>
+                  </div>
+
+                  {/* Features */}
+                  <div>
+                    <h4 
+                      className="text-xl font-bold mb-4"
+                      style={{ 
+                        color: selectedService.color,
+                        fontFamily: 'Playfair Display, serif'
+                      }}
+                    >
+                      Our Services Include:
+                    </h4>
+                    <div className="grid sm:grid-cols-2 gap-3">
+                      {selectedService.details.features.map((feature, idx) => (
+                        <div key={idx} className="flex items-start gap-3">
+                          <CheckCircle 
+                            size={20} 
+                            className="flex-shrink-0 mt-0.5"
+                            style={{ color: selectedService.color }}
+                          />
+                          <span className="text-sm text-gray-700">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Process */}
+                  <div 
+                    className="p-6 rounded-xl"
+                    style={{ background: `${selectedService.color}15` }}
+                  >
+                    <h4 
+                      className="text-lg font-bold mb-3"
+                      style={{ 
+                        color: selectedService.color,
+                        fontFamily: 'Playfair Display, serif'
+                      }}
+                    >
+                      Our Process
+                    </h4>
+                    <p className="text-sm text-gray-700 leading-relaxed">
+                      {selectedService.details.process}
+                    </p>
+                  </div>
+
+                  {/* Why Choose Us */}
+                  <div>
+                    <h4 
+                      className="text-xl font-bold mb-4"
+                      style={{ 
+                        color: selectedService.color,
+                        fontFamily: 'Playfair Display, serif'
+                      }}
+                    >
+                      Why Choose Us?
+                    </h4>
+                    <div className="space-y-2">
+                      {selectedService.details.whyChoose.map((reason, idx) => (
+                        <div key={idx} className="flex items-start gap-3">
+                          <div 
+                            className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
+                            style={{ background: selectedService.color }}
+                          ></div>
+                          <span className="text-sm text-gray-700">{reason}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* CTA */}
+                  <div className="pt-4">
+                    <button
+                      onClick={() => {
+                        setSelectedService(null);
+                        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                      className="w-full py-4 rounded-full font-semibold text-white transition-all duration-300"
+                      style={{
+                        background: `linear-gradient(135deg, ${selectedService.color} 0%, ${selectedService.color}dd 100%)`,
+                        boxShadow: `0 8px 20px ${selectedService.color}40`
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'translateY(-2px)';
+                        e.currentTarget.style.boxShadow = `0 12px 30px ${selectedService.color}60`;
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'translateY(0)';
+                        e.currentTarget.style.boxShadow = `0 8px 20px ${selectedService.color}40`;
+                      }}
+                    >
+                      Get Started - Contact Us Today
+                    </button>
+                  </div>
+                </div>
+              </>
+            )}
+          </DialogContent>
+        </Dialog>
       </div>
     </section>
   );
