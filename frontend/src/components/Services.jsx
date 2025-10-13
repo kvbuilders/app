@@ -1,5 +1,12 @@
-import { useEffect, useRef } from 'react';
-import { Hammer, Palette, Home } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { Hammer, Palette, Home, CheckCircle, ArrowRight, X } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from '@/components/ui/dialog';
 
 const Services = () => {
   const sectionRef = useRef(null);
