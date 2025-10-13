@@ -54,25 +54,25 @@ const Contact = () => {
       id="contact"
       data-testid="contact-section"
       ref={sectionRef}
-      className="py-20 lg:py-32 relative"
+      className="py-12 sm:py-16 lg:py-32 relative"
       style={{
         background: 'linear-gradient(135deg, #FAF8F5 0%, #FFFFFF 100%)'
       }}
     >
-      <div className="container mx-auto px-6 lg:px-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12">
         {/* Section Header */}
-        <div className="text-center mb-16 reveal">
+        <div className="text-center mb-12 sm:mb-16 reveal">
           <div
-            className="inline-block px-4 py-2 rounded-full mb-4"
+            className="inline-block px-3 sm:px-4 py-2 rounded-full mb-3 sm:mb-4"
             style={{
               background: 'linear-gradient(135deg, rgba(212, 165, 116, 0.1) 0%, rgba(184, 147, 111, 0.1) 100%)',
               border: '1px solid rgba(212, 165, 116, 0.3)'
             }}
           >
-            <span className="text-amber-700 font-semibold text-sm">GET IN TOUCH</span>
+            <span className="text-amber-700 font-semibold text-xs sm:text-sm">GET IN TOUCH</span>
           </div>
           <h2
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 px-4"
             style={{
               fontFamily: 'Playfair Display, serif',
               color: '#2C5F4E'
@@ -80,22 +80,22 @@ const Contact = () => {
           >
             Let's Discuss Your Project
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
             Ready to turn your vision into reality? Get in touch with us today
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12">
           {/* Contact Info */}
           <div className="reveal-left">
-            <div className="space-y-8">
+            <div className="space-y-6 sm:space-y-8">
               {/* Contact Card */}
               <div
-                className="bg-white p-8 rounded-2xl shadow-lg card-hover"
+                className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg card-hover"
                 style={{ border: '1px solid rgba(212, 165, 116, 0.2)' }}
               >
                 <h3
-                  className="text-3xl font-bold mb-6"
+                  className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6"
                   style={{
                     fontFamily: 'Playfair Display, serif',
                     color: '#2C5F4E'
@@ -104,19 +104,19 @@ const Contact = () => {
                   Contact Information
                 </h3>
 
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
+                <div className="space-y-4 sm:space-y-6">
+                  <div className="flex items-start gap-3 sm:gap-4">
                     <div
-                      className="p-3 rounded-lg"
+                      className="p-2.5 sm:p-3 rounded-lg flex-shrink-0"
                       style={{ background: 'linear-gradient(135deg, #D4A574 0%, #B8936F 100%)' }}
                     >
-                      <Phone className="text-white" size={24} />
+                      <Phone className="text-white" size={20} />
                     </div>
                     <div>
-                      <p className="text-sm text-gray-600 mb-1">Phone</p>
+                      <p className="text-xs sm:text-sm text-gray-600 mb-1">Phone</p>
                       <a
                         href="tel:9843072490"
-                        className="text-lg font-semibold hover:text-amber-700 transition-colors"
+                        className="text-base sm:text-lg font-semibold hover:text-amber-700 transition-colors"
                         style={{ color: '#2C5F4E' }}
                       >
                         98430 72490
@@ -124,18 +124,18 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4">
+                  <div className="flex items-start gap-3 sm:gap-4">
                     <div
-                      className="p-3 rounded-lg"
+                      className="p-2.5 sm:p-3 rounded-lg flex-shrink-0"
                       style={{ background: 'linear-gradient(135deg, #D4A574 0%, #B8936F 100%)' }}
                     >
-                      <Mail className="text-white" size={24} />
+                      <Mail className="text-white" size={20} />
                     </div>
                     <div>
-                      <p className="text-sm text-gray-600 mb-1">Email</p>
+                      <p className="text-xs sm:text-sm text-gray-600 mb-1">Email</p>
                       <a
                         href="mailto:kvbuilders04@gmail.com"
-                        className="text-lg font-semibold hover:text-amber-700 transition-colors"
+                        className="text-sm sm:text-base lg:text-lg font-semibold hover:text-amber-700 transition-colors break-all"
                         style={{ color: '#2C5F4E' }}
                       >
                         kvbuilders04@gmail.com
@@ -143,16 +143,16 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4">
+                  <div className="flex items-start gap-3 sm:gap-4">
                     <div
-                      className="p-3 rounded-lg"
+                      className="p-2.5 sm:p-3 rounded-lg flex-shrink-0"
                       style={{ background: 'linear-gradient(135deg, #D4A574 0%, #B8936F 100%)' }}
                     >
-                      <MapPin className="text-white" size={24} />
+                      <MapPin className="text-white" size={20} />
                     </div>
                     <div>
-                      <p className="text-sm text-gray-600 mb-1">Address</p>
-                      <p className="text-lg font-semibold" style={{ color: '#2C5F4E' }}>
+                      <p className="text-xs sm:text-sm text-gray-600 mb-1">Address</p>
+                      <p className="text-sm sm:text-base lg:text-lg font-semibold" style={{ color: '#2C5F4E' }}>
                         No. 36, 1st Floor, S.N.D Lay-out,<br />
                         Street No.4, Tatabad,<br />
                         Coimbatore - 641 012
@@ -164,7 +164,7 @@ const Contact = () => {
 
               {/* Leadership Card */}
               <div
-                className="p-8 rounded-2xl text-white relative overflow-hidden"
+                className="p-6 sm:p-8 rounded-2xl text-white relative overflow-hidden"
                 style={{
                   background: 'linear-gradient(135deg, #2C5F4E 0%, #1A3A2E 100%)',
                   boxShadow: '0 10px 30px rgba(44, 95, 78, 0.3)'
@@ -172,18 +172,18 @@ const Contact = () => {
               >
                 <div className="relative z-10">
                   <h4
-                    className="text-2xl font-bold mb-2"
+                    className="text-xl sm:text-2xl font-bold mb-2"
                     style={{ fontFamily: 'Playfair Display, serif' }}
                   >
                     K. Kumaravel M.Sc.
                   </h4>
-                  <p className="text-amber-300 mb-4">Founder & Director</p>
-                  <p className="text-gray-300 leading-relaxed">
+                  <p className="text-amber-300 mb-3 sm:mb-4 text-sm sm:text-base">Founder & Director</p>
+                  <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
                     Leading KV Builders & Realtors with a vision for excellence and innovation in construction.
                   </p>
                 </div>
                 <div
-                  className="absolute -bottom-10 -right-10 w-40 h-40 rounded-full"
+                  className="absolute -bottom-10 -right-10 w-32 h-32 sm:w-40 sm:h-40 rounded-full"
                   style={{ background: 'rgba(212, 165, 116, 0.1)' }}
                 ></div>
               </div>
@@ -195,11 +195,11 @@ const Contact = () => {
             <form
               data-testid="contact-form"
               onSubmit={handleSubmit}
-              className="bg-white p-8 md:p-10 rounded-2xl shadow-lg"
+              className="bg-white p-6 sm:p-8 md:p-10 rounded-2xl shadow-lg"
               style={{ border: '1px solid rgba(212, 165, 116, 0.2)' }}
             >
               <h3
-                className="text-3xl font-bold mb-6"
+                className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6"
                 style={{
                   fontFamily: 'Playfair Display, serif',
                   color: '#2C5F4E'
@@ -208,7 +208,7 @@ const Contact = () => {
                 Send Us a Message
               </h3>
 
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 <div>
                   <label className="block text-sm font-semibold mb-2" style={{ color: '#2C5F4E' }}>
                     Your Name *
@@ -220,7 +220,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg border-2 transition-all duration-300 focus:outline-none"
+                    className="w-full px-4 py-2.5 sm:py-3 rounded-lg border-2 transition-all duration-300 focus:outline-none text-sm sm:text-base"
                     style={{
                       borderColor: 'rgba(212, 165, 116, 0.3)',
                       color: '#1F2937'
@@ -237,7 +237,7 @@ const Contact = () => {
                   />
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                   <div>
                     <label className="block text-sm font-semibold mb-2" style={{ color: '#2C5F4E' }}>
                       Email *
@@ -249,7 +249,7 @@ const Contact = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-lg border-2 transition-all duration-300 focus:outline-none"
+                      className="w-full px-4 py-2.5 sm:py-3 rounded-lg border-2 transition-all duration-300 focus:outline-none text-sm sm:text-base"
                       style={{
                         borderColor: 'rgba(212, 165, 116, 0.3)',
                         color: '#1F2937'
@@ -276,7 +276,7 @@ const Contact = () => {
                       data-testid="contact-phone-input"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg border-2 transition-all duration-300 focus:outline-none"
+                      className="w-full px-4 py-2.5 sm:py-3 rounded-lg border-2 transition-all duration-300 focus:outline-none text-sm sm:text-base"
                       style={{
                         borderColor: 'rgba(212, 165, 116, 0.3)',
                         color: '#1F2937'
@@ -304,7 +304,7 @@ const Contact = () => {
                     value={formData.service}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg border-2 transition-all duration-300 focus:outline-none"
+                    className="w-full px-4 py-2.5 sm:py-3 rounded-lg border-2 transition-all duration-300 focus:outline-none text-sm sm:text-base"
                     style={{
                       borderColor: 'rgba(212, 165, 116, 0.3)',
                       color: '#1F2937'
@@ -335,8 +335,8 @@ const Contact = () => {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    rows="5"
-                    className="w-full px-4 py-3 rounded-lg border-2 transition-all duration-300 focus:outline-none resize-none"
+                    rows="4"
+                    className="w-full px-4 py-2.5 sm:py-3 rounded-lg border-2 transition-all duration-300 focus:outline-none resize-none text-sm sm:text-base"
                     style={{
                       borderColor: 'rgba(212, 165, 116, 0.3)',
                       color: '#1F2937'
@@ -356,7 +356,7 @@ const Contact = () => {
                 <button
                   type="submit"
                   data-testid="contact-submit-btn"
-                  className="w-full py-4 rounded-full font-semibold text-white flex items-center justify-center gap-2 transition-all duration-300"
+                  className="w-full py-3 sm:py-4 rounded-full font-semibold text-white flex items-center justify-center gap-2 transition-all duration-300 text-sm sm:text-base"
                   style={{
                     background: 'linear-gradient(135deg, #D4A574 0%, #B8936F 100%)',
                     boxShadow: '0 8px 20px rgba(212, 165, 116, 0.4)'
@@ -370,7 +370,7 @@ const Contact = () => {
                     e.currentTarget.style.boxShadow = '0 8px 20px rgba(212, 165, 116, 0.4)';
                   }}
                 >
-                  <Send size={20} />
+                  <Send size={18} />
                   Submit Inquiry
                 </button>
               </div>
