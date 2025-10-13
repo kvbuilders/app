@@ -12,7 +12,7 @@ const Hero = () => {
     <section
       id="home"
       data-testid="hero-section"
-      className="relative h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Background Image with Parallax Effect */}
       <div
@@ -34,12 +34,12 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-12 text-center py-20 md:py-0">
         <div className="max-w-4xl mx-auto">
           {/* Animated Badge */}
           <div
             data-testid="hero-badge"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 animate-fade-in"
+            className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full mb-4 sm:mb-6 animate-fade-in"
             style={{
               background: 'rgba(212, 165, 116, 0.2)',
               border: '1px solid rgba(212, 165, 116, 0.5)',
@@ -47,16 +47,15 @@ const Hero = () => {
             }}
           >
             <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-            <span className="text-white text-sm font-medium">Excellence in Construction & Real Estate</span>
+            <span className="text-white text-xs sm:text-sm font-medium">Excellence in Construction & Real Estate</span>
           </div>
 
           {/* Main Heading */}
           <h1
             data-testid="hero-heading"
-            className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 animate-slide-up"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-4 sm:mb-6 animate-slide-up leading-tight"
             style={{
               fontFamily: 'Playfair Display, serif',
-              lineHeight: '1.2',
               textShadow: '2px 4px 10px rgba(0, 0, 0, 0.3)'
             }}
           >
@@ -77,7 +76,7 @@ const Hero = () => {
           {/* Subheading */}
           <p
             data-testid="hero-subheading"
-            className="text-xl md:text-2xl text-gray-200 mb-12 animate-slide-up"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 mb-8 sm:mb-12 animate-slide-up px-4"
             style={{
               animationDelay: '0.2s',
               opacity: 0,
@@ -90,7 +89,7 @@ const Hero = () => {
           {/* CTA Buttons */}
           <div
             data-testid="hero-cta-buttons"
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center animate-slide-up px-4"
             style={{
               animationDelay: '0.4s',
               opacity: 0,
@@ -100,7 +99,7 @@ const Hero = () => {
             <button
               data-testid="view-projects-btn"
               onClick={() => scrollToSection('projects')}
-              className="group px-8 py-4 rounded-full font-semibold text-white flex items-center gap-2 transition-all duration-300"
+              className="group w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-white flex items-center justify-center gap-2 transition-all duration-300"
               style={{
                 background: 'linear-gradient(135deg, #D4A574 0%, #B8936F 100%)',
                 boxShadow: '0 8px 20px rgba(212, 165, 116, 0.4)'
@@ -121,7 +120,7 @@ const Hero = () => {
             <button
               data-testid="get-quote-btn"
               onClick={() => scrollToSection('contact')}
-              className="group px-8 py-4 rounded-full font-semibold flex items-center gap-2 transition-all duration-300"
+              className="group w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold flex items-center justify-center gap-2 transition-all duration-300"
               style={{
                 background: 'rgba(255, 255, 255, 0.15)',
                 backdropFilter: 'blur(10px)',
@@ -147,7 +146,7 @@ const Hero = () => {
       {/* Scroll Indicator */}
       <div
         data-testid="scroll-indicator"
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce"
+        className="absolute bottom-6 sm:bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce hidden sm:block"
       >
         <div className="w-6 h-10 rounded-full border-2 border-white/50 flex items-start justify-center p-2">
           <div className="w-1 h-3 bg-white rounded-full animate-pulse"></div>
