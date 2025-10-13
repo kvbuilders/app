@@ -212,25 +212,13 @@ const Services = () => {
                   
                   {/* Learn More Link */}
                   <button
+                    onClick={() => setSelectedService(service)}
+                    data-testid={`learn-more-${index}`}
                     className="mt-4 sm:mt-6 font-semibold flex items-center gap-2 group-hover:gap-3 transition-all duration-300 text-sm sm:text-base"
                     style={{ color: service.color }}
                   >
                     Learn More
-                    <svg
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                      className="transition-transform duration-300 group-hover:translate-x-1"
-                    >
-                      <path
-                        d="M5 10h10M10 5l5 5-5 5"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
+                    <ArrowRight size={20} className="transition-transform duration-300 group-hover:translate-x-1" />
                   </button>
                 </div>
               </div>
