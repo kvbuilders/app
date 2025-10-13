@@ -10,6 +10,7 @@ import {
 
 const Services = () => {
   const sectionRef = useRef(null);
+  const [selectedService, setSelectedService] = useState(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -35,21 +36,82 @@ const Services = () => {
       title: 'Construction',
       description: 'From foundation to finishing, we deliver quality construction services',
       image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5',
-      color: '#2C5F4E'
+      color: '#2C5F4E',
+      details: {
+        intro: 'KV Builders brings decades of construction excellence to every project, from residential homes to commercial complexes. Our comprehensive construction services cover every phase of your building journey.',
+        features: [
+          'Residential Construction - Custom homes, villas, and apartment complexes',
+          'Commercial Construction - Office buildings, retail spaces, and industrial facilities',
+          'Renovation & Remodeling - Transform existing spaces with modern upgrades',
+          'Structural Engineering - Expert foundation and structural design',
+          'Project Management - End-to-end coordination and quality control',
+          'Safety Compliance - Adherence to all building codes and safety standards'
+        ],
+        process: 'Our construction process begins with detailed planning and site analysis, followed by precision execution using modern techniques and quality materials. We maintain transparent communication throughout, ensuring your vision becomes reality on time and within budget.',
+        whyChoose: [
+          'Experienced team with 15+ years in the industry',
+          'Use of premium, sustainable building materials',
+          'Advanced construction methodologies',
+          'Strict quality control at every stage',
+          'On-time project delivery guarantee',
+          'Post-construction support and warranty'
+        ]
+      }
     },
     {
       icon: <Palette size={32} />,
       title: 'Interior Works',
       description: 'Creating beautiful, functional spaces with premium interior solutions',
       image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6',
-      color: '#D4A574'
+      color: '#D4A574',
+      details: {
+        intro: 'Transform your spaces into stunning, functional environments with our expert interior design and execution services. We blend aesthetics with practicality to create interiors that reflect your personality and meet your lifestyle needs.',
+        features: [
+          'Complete Interior Design - Conceptualization to execution',
+          'Modular Kitchens - Custom-designed, space-optimized kitchen solutions',
+          'Bedroom & Living Spaces - Elegant, comfortable living environments',
+          'False Ceiling & Lighting - Architectural lighting and ceiling designs',
+          'Flooring Solutions - Marble, tiles, wooden, and designer flooring',
+          'Custom Furniture - Bespoke furniture design and manufacturing',
+          'Wall Treatments - Textures, wallpapers, and decorative finishes'
+        ],
+        process: 'We start with understanding your taste, lifestyle, and budget. Our designers create 3D visualizations for your approval before execution. Every element is carefully selected and installed by skilled craftsmen to ensure perfection.',
+        whyChoose: [
+          'Award-winning interior designers',
+          'Premium materials and finishes',
+          '3D visualization before execution',
+          'Customized solutions for every budget',
+          'In-house manufacturing for custom furniture',
+          'Complete turnkey interior solutions'
+        ]
+      }
     },
     {
       icon: <Home size={32} />,
       title: 'Real Estate',
       description: 'Helping you find or develop the perfect property for your needs',
       image: 'https://images.unsplash.com/photo-1582407947304-fd86f028f716',
-      color: '#C95D3F'
+      color: '#C95D3F',
+      details: {
+        intro: 'Navigate the real estate market with confidence through our comprehensive property services. Whether you\'re buying, selling, or developing, we provide expert guidance and end-to-end support.',
+        features: [
+          'Property Development - Land acquisition to project completion',
+          'Buy & Sell Services - Residential and commercial property transactions',
+          'Property Consultation - Expert market analysis and investment advice',
+          'Legal Assistance - Documentation and legal compliance support',
+          'Property Management - Maintenance and tenant management services',
+          'Investment Opportunities - Curated portfolio of premium properties'
+        ],
+        process: 'Our real estate experts analyze market trends, evaluate properties, handle negotiations, and manage all legal formalities. We ensure transparent dealings and provide comprehensive support throughout your property journey.',
+        whyChoose: [
+          'Extensive market knowledge in Coimbatore',
+          'Verified property listings',
+          'Expert negotiation skills',
+          'Complete legal support',
+          'Transparent fee structure',
+          'Post-sale support and assistance'
+        ]
+      }
     }
   ];
 
