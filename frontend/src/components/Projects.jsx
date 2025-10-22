@@ -37,14 +37,14 @@ const Projects = () => {
       description: 'Modern luxury villa with contemporary design and premium finishes'
     },
     {
-      image: 'https://images.unsplash.com/photo-1582407947304-fd86f028f716',
+      image: '/contemporary.jpg',
       category: 'Commercial',
       title: 'Contemporary Architecture',
       location: 'Coimbatore',
       description: 'Geometric modern building with innovative design'
     },
     {
-      image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7',
+      image: '/premium-interior.jpg',
       category: 'Interior',
       title: 'Premium Interior Design',
       location: 'Coimbatore',

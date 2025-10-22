@@ -1,8 +1,13 @@
-import { useEffect, useRef } from 'react';
-import { Lightbulb, Hammer, CheckCircle, Key } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { Lightbulb, Hammer, CheckCircle, Key, X } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+} from '@/components/ui/dialog';
 
 const Process = () => {
   const sectionRef = useRef(null);
+  const [fullscreenImage, setFullscreenImage] = useState(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -35,14 +40,14 @@ const Process = () => {
       icon: <Hammer size={28} />,
       title: 'Construction',
       description: 'Our skilled team brings your project to life with quality workmanship',
-      image: 'https://images.unsplash.com/photo-1599995903128-531fc7fb694b'
+      image: '/construction-process.jpg'
     },
     {
       number: '03',
       icon: <CheckCircle size={28} />,
       title: 'Quality Inspection',
       description: 'Rigorous quality checks ensure every detail meets our high standards',
-      image: 'https://images.pexels.com/photos/2138126/pexels-photo-2138126.jpeg'
+      image: '/quality-inspection.jpg'
     },
     {
       number: '04',
@@ -149,7 +154,10 @@ const Process = () => {
 
               {/* Image */}
               <div className={`${index % 2 === 1 ? 'lg:order-1' : 'order-2'}`}>
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl img-hover group">
+                <div 
+                  className="relative rounded-2xl overflow-hidden shadow-2xl img-hover group cursor-pointer"
+                  onClick={() => setFullscreenImage(step.image)}
+                >
                   <div style={{ paddingTop: '75%', position: 'relative' }}>
                     <img
                       src={step.image}
@@ -168,6 +176,27 @@ const Process = () => {
             </div>
           ))}
         </div>
+
+        {/* Fullscreen Image Viewer */}
+        <Dialog open={!!fullscreenImage} onOpenChange={() => setFullscreenImage(null)}>
+          <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 border-0 bg-black/95">
+            <div className="relative w-full h-full flex items-center justify-center">
+              <button
+                onClick={() => setFullscreenImage(null)}
+                className="absolute top-4 right-4 z-50 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+              >
+                <X size={24} />
+              </button>
+              {fullscreenImage && (
+                <img
+                  src={fullscreenImage}
+                  alt="Fullscreen view"
+                  className="max-w-full max-h-[90vh] object-contain"
+                />
+              )}
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
     </section>
   );

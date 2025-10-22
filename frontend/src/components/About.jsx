@@ -48,7 +48,7 @@ const About = () => {
               color: '#2C5F4E'
             }}
           >
-            About KV Builders & Realtors
+            About KV Builders
           </h2>
           <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
             Building Excellence Since Years
@@ -60,7 +60,7 @@ const About = () => {
           {/* Left Content */}
           <div className="reveal-left">
             <p className="text-base sm:text-lg text-gray-700 leading-relaxed mb-4 sm:mb-6">
-              KV Builders & Realtors is a leading construction and real estate company based in Coimbatore, 
+              KV Builders is a leading construction and real estate company based in Coimbatore, 
               committed to delivering exceptional quality in every project we undertake. Under the visionary 
               leadership of <strong>K. Kumaravel M.Sc.</strong>, we have established ourselves as a trusted 
               name in the industry.

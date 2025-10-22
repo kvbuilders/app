@@ -178,7 +178,7 @@ const Footer = () => {
           style={{ borderTop: '1px solid rgba(212, 165, 116, 0.2)' }}
         >
           <p className="text-sm sm:text-base text-gray-400">
-            © {new Date().getFullYear()} KV Builders & Realtors. All rights reserved.
+            © {new Date().getFullYear()} KV Builders. All rights reserved.
           </p>
           <p className="text-xs sm:text-sm text-gray-500 mt-2">
             Led by <span style={{ color: '#D4A574' }}>K. Kumaravel M.Sc.</span> - Founder & Director

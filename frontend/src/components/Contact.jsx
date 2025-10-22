@@ -179,7 +179,7 @@ const Contact = () => {
                   </h4>
                   <p className="text-amber-300 mb-3 sm:mb-4 text-sm sm:text-base">Founder & Director</p>
                   <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
-                    Leading KV Builders & Realtors with a vision for excellence and innovation in construction.
+                    Leading KV Builders with a vision for excellence and innovation in construction.
                   </p>
                 </div>
                 <div
