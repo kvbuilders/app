@@ -35,7 +35,7 @@ const Services = () => {
       icon: <Hammer size={32} />,
       title: 'Construction',
       description: 'From foundation to finishing, we deliver quality construction services',
-      image: 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5',
+      image: '/construction.jpg',
       color: '#2C5F4E',
       details: {
         intro: 'KV Builders brings decades of construction excellence to every project, from residential homes to commercial complexes. Our comprehensive construction services cover every phase of your building journey.',
@@ -62,7 +62,7 @@ const Services = () => {
       icon: <Palette size={32} />,
       title: 'Interior Works',
       description: 'Creating beautiful, functional spaces with premium interior solutions',
-      image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6',
+      image: '/interior.jpg',
       color: '#D4A574',
       details: {
         intro: 'Transform your spaces into stunning, functional environments with our expert interior design and execution services. We blend aesthetics with practicality to create interiors that reflect your personality and meet your lifestyle needs.',
@@ -90,7 +90,7 @@ const Services = () => {
       icon: <Home size={32} />,
       title: 'Real Estate',
       description: 'Helping you find or develop the perfect property for your needs',
-      image: 'https://images.unsplash.com/photo-1582407947304-fd86f028f716',
+      image: '/realestate.jpg',
       color: '#C95D3F',
       details: {
         intro: 'Navigate the real estate market with confidence through our comprehensive property services. Whether you\'re buying, selling, or developing, we provide expert guidance and end-to-end support.',

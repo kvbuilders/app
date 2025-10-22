@@ -25,7 +25,7 @@ const Projects = () => {
 
   const projects = [
     {
-      image: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914',
+      image: '/luxury-villa.jpg',
       category: 'Residential',
       title: 'Luxury Villa Project',
       location: 'Coimbatore',
