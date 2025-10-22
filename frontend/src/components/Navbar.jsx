@@ -35,14 +35,27 @@ const Navbar = () => {
           {/* Logo */}
           <div
             data-testid="logo"
-            className="text-2xl md:text-3xl font-bold"
-            style={{
-              color: isScrolled ? '#2C5F4E' : '#ffffff',
-              fontFamily: 'Playfair Display, serif',
-              transition: 'color 0.3s ease'
-            }}
+            className="flex items-center gap-2 md:gap-3"
           >
-            KV Builders
+            <img 
+              src="/kv-logo.png" 
+              alt="KV Builders Logo" 
+              className="h-8 md:h-10 w-auto object-contain"
+              style={{
+                filter: isScrolled ? 'none' : 'brightness(0) invert(1)',
+                transition: 'filter 0.3s ease'
+              }}
+            />
+            <span
+              className="text-2xl md:text-3xl font-bold"
+              style={{
+                color: isScrolled ? '#2C5F4E' : '#ffffff',
+                fontFamily: 'Playfair Display, serif',
+                transition: 'color 0.3s ease'
+              }}
+            >
+              KV Builders
+            </span>
           </div>
 
           {/* Desktop Menu */}
