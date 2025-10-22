@@ -135,11 +135,11 @@ const Projects = () => {
               }}
             >
               <div
-                className="bg-white rounded-2xl overflow-hidden shadow-lg"
+                className="bg-white rounded-2xl overflow-hidden shadow-lg h-full flex flex-col"
                 style={{ border: '1px solid rgba(212, 165, 116, 0.2)' }}
               >
                 {/* Image */}
-                <div className="relative h-56 sm:h-64 lg:h-72 overflow-hidden img-hover">
+                <div className="relative h-64 overflow-hidden img-hover flex-shrink-0">
                   <img
                     src={project.image}
                     alt={project.title}
@@ -164,7 +164,7 @@ const Projects = () => {
                 </div>
 
                 {/* Content */}
-                <div className="p-4 sm:p-6">
+                <div className="p-4 sm:p-6 flex-grow flex flex-col">
                   <h3
                     className="text-xl sm:text-2xl font-bold mb-2"
                     style={{
