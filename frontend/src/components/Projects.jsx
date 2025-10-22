@@ -1,9 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
-import { MapPin } from 'lucide-react';
+import { MapPin, X } from 'lucide-react';
+import {
+  Dialog,
+  DialogContent,
+} from '@/components/ui/dialog';
 
 const Projects = () => {
   const sectionRef = useRef(null);
   const [activeFilter, setActiveFilter] = useState('All');
+  const [fullscreenImage, setFullscreenImage] = useState(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -139,7 +144,13 @@ const Projects = () => {
                 style={{ border: '1px solid rgba(212, 165, 116, 0.2)' }}
               >
                 {/* Image */}
-                <div className="relative h-64 overflow-hidden img-hover flex-shrink-0">
+                <div 
+                  className="relative h-64 overflow-hidden img-hover flex-shrink-0 cursor-pointer"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setFullscreenImage(project.image);
+                  }}
+                >
                   <img
                     src={project.image}
                     alt={project.title}
@@ -186,6 +197,27 @@ const Projects = () => {
             </div>
           ))}
         </div>
+
+        {/* Fullscreen Image Viewer */}
+        <Dialog open={!!fullscreenImage} onOpenChange={() => setFullscreenImage(null)}>
+          <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 border-0 bg-black/95">
+            <div className="relative w-full h-full flex items-center justify-center">
+              <button
+                onClick={() => setFullscreenImage(null)}
+                className="absolute top-4 right-4 z-50 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+              >
+                <X size={24} />
+              </button>
+              {fullscreenImage && (
+                <img
+                  src={fullscreenImage}
+                  alt="Fullscreen view"
+                  className="max-w-full max-h-[90vh] object-contain"
+                />
+              )}
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
     </section>
   );

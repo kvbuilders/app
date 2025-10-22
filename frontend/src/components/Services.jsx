@@ -11,6 +11,7 @@ import {
 const Services = () => {
   const sectionRef = useRef(null);
   const [selectedService, setSelectedService] = useState(null);
+  const [fullscreenImage, setFullscreenImage] = useState(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -169,7 +170,13 @@ const Services = () => {
                 }}
               >
                 {/* Image */}
-                <div className="relative h-56 sm:h-64 overflow-hidden img-hover">
+                <div 
+                  className="relative h-56 sm:h-64 overflow-hidden img-hover cursor-pointer"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setFullscreenImage(service.image);
+                  }}
+                >
                   <img
                     src={service.image}
                     alt={service.title}
@@ -225,6 +232,27 @@ const Services = () => {
             </div>
           ))}
         </div>
+
+        {/* Fullscreen Image Viewer */}
+        <Dialog open={!!fullscreenImage} onOpenChange={() => setFullscreenImage(null)}>
+          <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 border-0 bg-black/95">
+            <div className="relative w-full h-full flex items-center justify-center">
+              <button
+                onClick={() => setFullscreenImage(null)}
+                className="absolute top-4 right-4 z-50 p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+              >
+                <X size={24} />
+              </button>
+              {fullscreenImage && (
+                <img
+                  src={fullscreenImage}
+                  alt="Fullscreen view"
+                  className="max-w-full max-h-[90vh] object-contain"
+                />
+              )}
+            </div>
+          </DialogContent>
+        </Dialog>
 
         {/* Service Details Modal */}
         <Dialog open={!!selectedService} onOpenChange={() => setSelectedService(null)}>
