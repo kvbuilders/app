@@ -32,27 +32,6 @@ const Projects = () => {
       description: 'Modern luxury villa with contemporary design and premium finishes'
     },
     {
-      image: 'https://images.unsplash.com/photo-1647025980693-04e6b24a6d78',
-      category: 'Residential',
-      title: 'Modern Residential Complex',
-      location: 'Tatabad',
-      description: 'Contemporary residential building with spacious apartments'
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1615406020658-6c4b805f1f30',
-      category: 'Commercial',
-      title: 'Commercial Complex',
-      location: 'Coimbatore',
-      description: 'State-of-the-art commercial building with modern amenities'
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1574848296471-28f79a036f79',
-      category: 'Commercial',
-      title: 'High-Rise Development',
-      location: 'Coimbatore',
-      description: 'Modern commercial high-rise with premium specifications'
-    },
-    {
       image: 'https://images.unsplash.com/photo-1582407947304-fd86f028f716',
       category: 'Commercial',
       title: 'Contemporary Architecture',
