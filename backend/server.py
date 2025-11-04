@@ -28,6 +28,9 @@ app = FastAPI()
 # Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
 
+# Security
+security = HTTPBasic()
+
 
 # Define Models
 class StatusCheck(BaseModel):
