@@ -42,8 +42,11 @@ const Footer = () => {
             </p>
             <div className="flex gap-3 sm:gap-4">
               <a
-                href="#"
+                href="https://www.facebook.com/people/KV-Builders/100081946775279/"
+                target="_blank"
+                rel="noopener noreferrer"
                 data-testid="social-facebook"
+                aria-label="Visit KV Builders on Facebook"
                 className="w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300"
                 style={{ background: 'rgba(212, 165, 116, 0.2)' }}
                 onMouseEnter={(e) => {
@@ -60,23 +63,17 @@ const Footer = () => {
               <a
                 href="#"
                 data-testid="social-twitter"
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300"
+                aria-label="Follow KV Builders on Twitter"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 opacity-50 cursor-not-allowed"
                 style={{ background: 'rgba(212, 165, 116, 0.2)' }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#D4A574';
-                  e.currentTarget.style.transform = 'translateY(-3px)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(212, 165, 116, 0.2)';
-                  e.currentTarget.style.transform = 'translateY(0)';
-                }}
               >
                 <Twitter size={16} />
               </a>
               <a
                 href="#"
                 data-testid="social-instagram"
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300"
+                aria-label="Follow KV Builders on Instagram"
+                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 opacity-50 cursor-not-allowed"
                 style={{ background: 'rgba(212, 165, 116, 0.2)' }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.background = '#D4A574';
