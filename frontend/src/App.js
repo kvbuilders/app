@@ -11,6 +11,7 @@ import Process from '@/components/Process';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
+import AdminDashboard from '@/components/AdminDashboard';
 
 const Home = () => {
   return (
