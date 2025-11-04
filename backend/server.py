@@ -230,15 +230,39 @@ async def submit_contact_form(request: Request, input: ContactInquiryCreate):
         raise HTTPException(status_code=500, detail="Failed to process inquiry")
 
 @api_router.get("/admin/inquiries", response_model=List[ContactInquiry])
-async def get_all_inquiries(credentials: HTTPBasicCredentials = Depends(verify_admin)):
-    """Get all contact inquiries (admin only)"""
+@limiter.limit("30/minute")  # Rate limit for admin endpoints
+async def get_all_inquiries(request: Request, credentials: HTTPBasicCredentials = Depends(verify_admin)):
+    """Get all contact inquiries (admin only) with caching"""
     try:
+        # Try to get from cache first
+        cache_key = "admin:inquiries:all"
+        cached_data = await redis_client.get(cache_key)
+        
+        if cached_data:
+            import json
+            inquiries_data = json.loads(cached_data)
+            # Convert timestamp strings back to datetime
+            for inquiry in inquiries_data:
+                inquiry['timestamp'] = datetime.fromisoformat(inquiry['timestamp'])
+            return inquiries_data
+        
+        # If not in cache, fetch from database
         inquiries = await db.contact_inquiries.find({}, {"_id": 0}).sort("timestamp", -1).to_list(1000)
         
         # Convert ISO string timestamps back to datetime objects
         for inquiry in inquiries:
             if isinstance(inquiry['timestamp'], str):
                 inquiry['timestamp'] = datetime.fromisoformat(inquiry['timestamp'])
+        
+        # Cache for 5 minutes
+        import json
+        cache_data = []
+        for inquiry in inquiries:
+            inquiry_copy = inquiry.copy()
+            inquiry_copy['timestamp'] = inquiry_copy['timestamp'].isoformat()
+            cache_data.append(inquiry_copy)
+        
+        await redis_client.setex(cache_key, timedelta(minutes=5), json.dumps(cache_data))
         
         return inquiries
     except Exception as e:
