@@ -38,16 +38,17 @@ const Navbar = () => {
             className="flex items-center gap-2 md:gap-3"
           >
             <div 
-              className="p-1.5 rounded-md"
+              className="p-2 rounded-lg"
               style={{
-                backgroundColor: isScrolled ? 'transparent' : 'rgba(255, 255, 255, 0.1)',
-                transition: 'background-color 0.3s ease'
+                backgroundColor: isScrolled ? '#2C5F4E' : 'rgba(255, 255, 255, 0.95)',
+                transition: 'background-color 0.3s ease',
+                boxShadow: isScrolled ? 'none' : '0 2px 8px rgba(0, 0, 0, 0.1)'
               }}
             >
               <img 
                 src="/kv-logo.png" 
                 alt="KV Builders Logo" 
-                className="h-8 md:h-10 w-auto object-contain"
+                className="h-6 md:h-8 w-auto object-contain"
                 style={{
                   filter: 'none',
                   transition: 'filter 0.3s ease'
