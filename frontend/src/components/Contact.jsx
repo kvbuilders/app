@@ -30,16 +30,35 @@ const Contact = () => {
     return () => observer.disconnect();
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    toast.success('Thank you! We will get back to you soon.');
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      service: 'Construction',
-      message: ''
-    });
+    
+    try {
+      const backendUrl = process.env.REACT_APP_BACKEND_URL || '';
+      const response = await fetch(`${backendUrl}/api/contact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit inquiry');
+      }
+
+      toast.success('Thank you! We have received your inquiry and will get back to you soon.');
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        service: 'Construction',
+        message: ''
+      });
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast.error('Sorry, there was an error submitting your inquiry. Please try again or contact us directly.');
+    }
   };
 
   const handleChange = (e) => {
