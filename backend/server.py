@@ -145,9 +145,50 @@ def verify_admin(credentials: HTTPBasicCredentials = Depends(security)):
 
 # Contact Form Endpoints
 @api_router.post("/contact", response_model=ContactInquiry)
-async def submit_contact_form(input: ContactInquiryCreate):
-    """Handle contact form submission"""
+@limiter.limit("10/minute")  # Rate limit: 10 requests per minute per IP
+async def submit_contact_form(request: Request, input: ContactInquiryCreate):
+    """Handle contact form submission with duplicate prevention (1 month cooldown)"""
     try:
+        # Check if email submitted inquiry in last 1 month
+        one_month_ago = datetime.now(timezone.utc) - timedelta(days=30)
+        
+        # Check in Redis cache first (faster)
+        cache_key = f"inquiry:{input.email}"
+        cached_timestamp = await redis_client.get(cache_key)
+        
+        if cached_timestamp:
+            last_inquiry_time = datetime.fromisoformat(cached_timestamp)
+            time_diff = datetime.now(timezone.utc) - last_inquiry_time
+            days_left = 30 - time_diff.days
+            
+            raise HTTPException(
+                status_code=429,
+                detail=f"You have already submitted an inquiry. Please wait {days_left} more days before submitting again."
+            )
+        
+        # Check in database as fallback
+        existing_inquiry = await db.contact_inquiries.find_one({
+            "email": input.email,
+            "timestamp": {"$gte": one_month_ago.isoformat()}
+        })
+        
+        if existing_inquiry:
+            last_inquiry_time = datetime.fromisoformat(existing_inquiry['timestamp'])
+            time_diff = datetime.now(timezone.utc) - last_inquiry_time
+            days_left = 30 - time_diff.days
+            
+            # Update cache
+            await redis_client.setex(
+                cache_key,
+                timedelta(days=days_left),
+                datetime.now(timezone.utc).isoformat()
+            )
+            
+            raise HTTPException(
+                status_code=429,
+                detail=f"You have already submitted an inquiry. Please wait {days_left} more days before submitting again."
+            )
+        
         # Create inquiry object
         inquiry_obj = ContactInquiry(**input.model_dump())
         
@@ -157,6 +198,13 @@ async def submit_contact_form(input: ContactInquiryCreate):
         
         # Save to database
         await db.contact_inquiries.insert_one(doc)
+        
+        # Cache the submission timestamp for 30 days
+        await redis_client.setex(
+            cache_key,
+            timedelta(days=30),
+            inquiry_obj.timestamp.isoformat()
+        )
         
         # Prepare data for email
         email_data = {
@@ -173,7 +221,10 @@ async def submit_contact_form(input: ContactInquiryCreate):
         asyncio.create_task(send_inquiry_notification(email_data))
         asyncio.create_task(send_customer_confirmation(inquiry_obj.email, inquiry_obj.name))
         
+        logger.info(f"New inquiry received from {inquiry_obj.email}")
         return inquiry_obj
+    except HTTPException:
+        raise
     except Exception as e:
         logger.error(f"Error processing contact form: {str(e)}")
         raise HTTPException(status_code=500, detail="Failed to process inquiry")
