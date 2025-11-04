@@ -38,7 +38,7 @@ const Projects = () => {
     },
     {
       image: '/contemporary.jpg',
-      category: 'Commercial',
+      category: 'Residential',
       title: 'Contemporary Architecture',
       location: 'Coimbatore',
       description: 'Geometric modern building with innovative design'
