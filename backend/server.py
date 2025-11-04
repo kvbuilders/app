@@ -270,7 +270,9 @@ async def get_all_inquiries(request: Request, credentials: HTTPBasicCredentials 
         raise HTTPException(status_code=500, detail="Failed to fetch inquiries")
 
 @api_router.patch("/admin/inquiries/{inquiry_id}")
+@limiter.limit("30/minute")
 async def update_inquiry_status(
+    request: Request,
     inquiry_id: str, 
     status: str,
     credentials: HTTPBasicCredentials = Depends(verify_admin)
@@ -284,6 +286,9 @@ async def update_inquiry_status(
         
         if result.modified_count == 0:
             raise HTTPException(status_code=404, detail="Inquiry not found")
+        
+        # Invalidate cache when data is updated
+        await redis_client.delete("admin:inquiries:all")
         
         return {"message": "Status updated successfully"}
     except HTTPException:
