@@ -52,7 +52,7 @@ const Projects = () => {
     }
   ];
 
-  const filters = ['All', 'Residential', 'Commercial', 'Interior'];
+  const filters = ['All', 'Residential', 'Interior'];
 
   const filteredProjects = activeFilter === 'All'
     ? projects
