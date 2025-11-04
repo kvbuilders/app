@@ -91,6 +91,93 @@ async def get_status_checks():
     
     return status_checks
 
+# Admin authentication
+def verify_admin(credentials: HTTPBasicCredentials = Depends(security)):
+    correct_password = os.environ['ADMIN_PASSWORD']
+    is_correct = secrets.compare_digest(credentials.password, correct_password)
+    
+    if not is_correct:
+        raise HTTPException(
+            status_code=401,
+            detail="Incorrect password",
+            headers={"WWW-Authenticate": "Basic"},
+        )
+    return credentials
+
+# Contact Form Endpoints
+@api_router.post("/contact", response_model=ContactInquiry)
+async def submit_contact_form(input: ContactInquiryCreate):
+    """Handle contact form submission"""
+    try:
+        # Create inquiry object
+        inquiry_obj = ContactInquiry(**input.model_dump())
+        
+        # Convert to dict and serialize datetime
+        doc = inquiry_obj.model_dump()
+        doc['timestamp'] = doc['timestamp'].isoformat()
+        
+        # Save to database
+        await db.contact_inquiries.insert_one(doc)
+        
+        # Prepare data for email
+        email_data = {
+            'name': inquiry_obj.name,
+            'email': inquiry_obj.email,
+            'phone': inquiry_obj.phone or 'Not provided',
+            'service': inquiry_obj.service,
+            'message': inquiry_obj.message,
+            'timestamp': inquiry_obj.timestamp.strftime('%Y-%m-%d %H:%M:%S UTC')
+        }
+        
+        # Send emails (don't wait for them to complete)
+        import asyncio
+        asyncio.create_task(send_inquiry_notification(email_data))
+        asyncio.create_task(send_customer_confirmation(inquiry_obj.email, inquiry_obj.name))
+        
+        return inquiry_obj
+    except Exception as e:
+        logger.error(f"Error processing contact form: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to process inquiry")
+
+@api_router.get("/admin/inquiries", response_model=List[ContactInquiry])
+async def get_all_inquiries(credentials: HTTPBasicCredentials = Depends(verify_admin)):
+    """Get all contact inquiries (admin only)"""
+    try:
+        inquiries = await db.contact_inquiries.find({}, {"_id": 0}).sort("timestamp", -1).to_list(1000)
+        
+        # Convert ISO string timestamps back to datetime objects
+        for inquiry in inquiries:
+            if isinstance(inquiry['timestamp'], str):
+                inquiry['timestamp'] = datetime.fromisoformat(inquiry['timestamp'])
+        
+        return inquiries
+    except Exception as e:
+        logger.error(f"Error fetching inquiries: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to fetch inquiries")
+
+@api_router.patch("/admin/inquiries/{inquiry_id}")
+async def update_inquiry_status(
+    inquiry_id: str, 
+    status: str,
+    credentials: HTTPBasicCredentials = Depends(verify_admin)
+):
+    """Update inquiry status (admin only)"""
+    try:
+        result = await db.contact_inquiries.update_one(
+            {"id": inquiry_id},
+            {"$set": {"status": status}}
+        )
+        
+        if result.modified_count == 0:
+            raise HTTPException(status_code=404, detail="Inquiry not found")
+        
+        return {"message": "Status updated successfully"}
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Error updating inquiry status: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to update status")
+
 # Include the router in the main app
 app.include_router(api_router)
 
