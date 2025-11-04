@@ -37,24 +37,16 @@ const Navbar = () => {
             data-testid="logo"
             className="flex items-center gap-2 md:gap-3"
           >
-            <div 
-              className="p-2 rounded-lg"
+            <img 
+              src="/kv-logo.png" 
+              alt="KV Builders Logo" 
+              className="h-8 md:h-10 w-auto object-contain"
               style={{
-                backgroundColor: isScrolled ? '#2C5F4E' : 'rgba(255, 255, 255, 0.95)',
-                transition: 'background-color 0.3s ease',
-                boxShadow: isScrolled ? 'none' : '0 2px 8px rgba(0, 0, 0, 0.1)'
+                filter: 'none',
+                transition: 'all 0.3s ease',
+                opacity: 1
               }}
-            >
-              <img 
-                src="/kv-logo.png" 
-                alt="KV Builders Logo" 
-                className="h-6 md:h-8 w-auto object-contain"
-                style={{
-                  filter: 'none',
-                  transition: 'filter 0.3s ease'
-                }}
-              />
-            </div>
+            />
             <span
               className="text-2xl md:text-3xl font-bold"
               style={{
