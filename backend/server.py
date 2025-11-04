@@ -41,12 +41,34 @@ limiter = Limiter(key_func=get_remote_address)
 
 # Create the main app without a prefix
 app = FastAPI()
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 # Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
 
 # Security
 security = HTTPBasic()
+
+
+# Startup event to initialize Redis and create indexes
+@app.on_event("startup")
+async def startup_db_client():
+    global redis_client
+    # Initialize Redis
+    redis_client = await aioredis.from_url(
+        "redis://localhost:6379",
+        encoding="utf-8",
+        decode_responses=True
+    )
+    
+    # Create indexes for better query performance
+    await db.contact_inquiries.create_index([("email", 1)])
+    await db.contact_inquiries.create_index([("timestamp", -1)])
+    await db.contact_inquiries.create_index([("status", 1)])
+    await db.status_checks.create_index([("timestamp", -1)])
+    
+    logger.info("Database indexes created and Redis connected")
 
 
 # Define Models
