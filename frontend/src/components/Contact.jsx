@@ -153,11 +153,11 @@ const Contact = () => {
                     <div>
                       <p className="text-xs sm:text-sm text-gray-600 mb-1">Email</p>
                       <a
-                        href="mailto:kvbuilders04@gmail.com"
+                        href="mailto:kvbuilders23@gmail.com"
                         className="text-sm sm:text-base lg:text-lg font-semibold hover:text-amber-700 transition-colors break-all"
                         style={{ color: '#2C5F4E' }}
                       >
-                        kvbuilders04@gmail.com
+                        kvbuilders23@gmail.com
                       </a>
                     </div>
                   </div>
