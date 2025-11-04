@@ -138,7 +138,7 @@ async def send_customer_confirmation(customer_email: str, customer_name: str):
                 <div class="contact-info">
                     <h3 style="color: #2C5F4E; margin-top: 0;">Our Contact Information:</h3>
                     <div class="contact-item">📞 Phone: 98430 72490</div>
-                    <div class="contact-item">✉️ Email: kvbuilders04@gmail.com</div>
+                    <div class="contact-item">✉️ Email: kvbuilders23@gmail.com</div>
                     <div class="contact-item">📍 Address: No. 36, 1st Floor, S.N.D Lay-out, Street No.4, Tatabad, Coimbatore - 641 012</div>
                 </div>
                 
