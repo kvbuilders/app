@@ -156,10 +156,10 @@ const Footer = () => {
               <li className="flex items-start gap-2 sm:gap-3">
                 <Mail size={16} className="mt-1 flex-shrink-0" style={{ color: '#D4A574' }} />
                 <a
-                  href="mailto:kvbuilders04@gmail.com"
+                  href="mailto:kvbuilders23@gmail.com"
                   className="text-sm sm:text-base text-gray-300 hover:text-amber-400 transition-colors break-all"
                 >
-                  kvbuilders04@gmail.com
+                  kvbuilders23@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-2 sm:gap-3">
