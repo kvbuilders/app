@@ -37,7 +37,8 @@ const SEO = ({
           "addressCountry": "IN"
         },
         "sameAs": [
-          "https://www.facebook.com/people/KV-Builders/100081946775279/"
+          "https://www.facebook.com/people/KV-Builders/100081946775279/",
+          "https://www.instagram.com/kvbuilders._"
         ]
       },
       {
