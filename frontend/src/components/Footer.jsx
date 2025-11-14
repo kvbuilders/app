@@ -61,34 +61,11 @@ const Footer = () => {
                 <Facebook size={16} />
               </a>
               <a
-                href="#"
-                data-testid="social-twitter"
-                aria-label="Follow KV Builders on Twitter"
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 opacity-50 cursor-not-allowed"
-                style={{ background: 'rgba(212, 165, 116, 0.2)' }}
-              >
-                <Twitter size={16} />
-              </a>
-              <a
-                href="#"
+                href="https://www.instagram.com/kvbuilders._?igsh=MXhieXhsb2plZGtqNQ=="
+                target="_blank"
+                rel="noopener noreferrer"
                 data-testid="social-instagram"
                 aria-label="Follow KV Builders on Instagram"
-                className="w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300 opacity-50 cursor-not-allowed"
-                style={{ background: 'rgba(212, 165, 116, 0.2)' }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#D4A574';
-                  e.currentTarget.style.transform = 'translateY(-3px)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(212, 165, 116, 0.2)';
-                  e.currentTarget.style.transform = 'translateY(0)';
-                }}
-              >
-                <Instagram size={16} />
-              </a>
-              <a
-                href="#"
-                data-testid="social-linkedin"
                 className="w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300"
                 style={{ background: 'rgba(212, 165, 116, 0.2)' }}
                 onMouseEnter={(e) => {
@@ -100,7 +77,7 @@ const Footer = () => {
                   e.currentTarget.style.transform = 'translateY(0)';
                 }}
               >
-                <Linkedin size={16} />
+                <Instagram size={16} />
               </a>
             </div>
           </div>
